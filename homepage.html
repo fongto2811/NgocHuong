@@ -1,731 +1,820 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-</head>
+  <body>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
 
-<body>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
+      /* ================================================= menu ================================================== */
+      .logo-center img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
 
-    /* ================================================= menu ================================================== */
-    .logo-center img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+      .logo-center {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -55%);
+        top: 0;
+        margin: 0;
+        padding: 5px 20px 5px 25px;
+        width: 200px;
+        background-color: #ffffff;
+        border-radius: 15px;
+      }
 
-    .logo-center {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -55%);
-      top: 0;
-      margin: 0;
-      padding: 5px 20px 5px 25px;
-      width: 200px;
-      background-color: #ffffff;
-      border-radius: 15px;
-    }
+      .container-fluid {
+        position: relative;
+      }
 
-    .container-fluid {
-      position: relative;
-    }
+      .dropdown-toggle::after {
+        display: none;
+      }
 
-    .dropdown-toggle::after {
-      display: none;
-    }
+      .nav-item a {
+        color: #ffffff !important;
+        font-weight: 400;
+      }
 
-    .nav-item a {
-      color: #ffffff !important;
-      font-weight: 400;
-    }
+      @media (min-width: 1400px) {
+        .navbar-nav {
+          flex-basis: 42%;
+          justify-content: space-between;
+        }
 
-    @media (min-width: 1400px) {
-      .navbar-nav {
-        flex-basis: 42%;
+        .navbar-nav:nth-child(2) {
+          flex-basis: 42.5%;
+          justify-content: space-between;
+        }
+      }
+
+      .collapse.sub-menu {
+        position: absolute;
+        left: 0;
+        z-index: 1000;
+        width: 100%;
+        height: 400px;
+        padding: 0;
+        margin: 0;
+        background-color: #fff199;
+      }
+
+      .collapsing {
+        display: none !important;
+      }
+
+      .sub-menu__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .sub-menu__header {
+        font-size: 20px;
+        color: #c63f3e;
+      }
+
+      .sub-menu__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sub-menu__item {
+        padding: 5px 0;
+      }
+
+      .sub-menu__item a {
+        font-size: 18px;
+        color: #c63f3e;
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      /* ================================================= banner ================================================ */
+      .homepage-banner {
+        width: 100%;
+      }
+
+      .homepage-banner img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* ================================================= contact =============================================== */
+      .homepage-contact {
+        width: 100%;
+        margin: 5px 0;
+        padding: 0 5%;
+      }
+
+      .homepage-contact .thankyou-text {
+        font-size: calc(1.25rem + 1.4vw);
+        color: #ff221d;
+        font-weight: 400;
+        font-style: italic;
+        align-self: center;
+      }
+
+      .homepage-contact .card-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: auto;
+      }
+
+      .homepage-contact .card-image {
+        width: 40%;
+        position: relative;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 0);
+        border: 3px solid #ff221d;
+        border-radius: 5%;
+      }
+
+      .homepage-contact .card-title {
+        font-size: calc(0.6rem + 0.5vw);
+        color: #ff221d;
+        font-weight: 700;
+      }
+
+      .homepage-contact .card-text {
+        font-size: calc(0.6rem + 0.21vw);
+        color: #ff221d;
+        font-weight: 400;
+        font-style: italic;
+      }
+
+      .homepage-contact .btn {
+        font-size: calc(0.4rem + 0.21vw);
+        color: #ffffff;
+        font-weight: 500;
+        min-width: 60%;
+        background: linear-gradient(to right, #ff0700, #ff6600);
+        border-radius: 20px;
+      }
+
+      /* ============================================ logo amination =============================================== */
+      .logo-animation {
+        margin: 20px 0;
+        height: 150px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .logo-animation .logo {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+      }
+
+      .logo-animation .logo-part {
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        animation: rotate 4s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      /* ============================================ list service =============================================== */
+      .blog-service {
+        margin-bottom: 60px;
+      }
+
+      .container-fluid h1 {
+        color: #ff221d;
+        margin: 20px;
+      }
+
+      .blog-service .row {
+        justify-content: space-evenly !important;
+      }
+
+      .blog-service .row > div {
+        position: relative;
+        margin-top: 40px;
+      }
+
+      .blog-service .card {
+        position: relative;
+        border: 1px solid #ff221d;
+        border-radius: 30px;
+        max-width: 23rem;
+        background-color: #fefecc;
+        padding: 0;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      .blog-service .card-img-top {
+        border-radius: 30px 30px 0 0;
+      }
+
+      .blog-service .card-title {
+        font-size: calc(1rem + 0.2vw);
+        color: #c63f3e;
+        font-weight: 700;
+      }
+
+      .blog-service .card-text {
+        font-size: calc(0.8rem + 0.2vw);
+        color: #c63f3e;
+        font-weight: 400;
+      }
+
+      .blog-service .btn {
+        font-size: calc(0.7rem + 0.2vw);
+        color: #c63f3e;
+        font-weight: 700;
+        min-width: 40%;
+        background-color: #fcfcab;
+        border: 1px solid #ff221d;
+        border-radius: 20px;
+      }
+
+      .blog-service .btn.active {
+        background-color: #c63f3e;
+        color: #fcfcab;
+      }
+
+      .blog-service .button-grp {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      /* ============================================ discount =============================================== */
+      .discount {
+        background: linear-gradient(to bottom, #fbf69b, #fff397);
+        width: 100%;
+      }
+
+      .discount .list-discount {
+        justify-content: center;
+        min-height: 600px;
+      }
+
+      .discount .list-discount > ul {
+        max-width: 40%;
         justify-content: space-between;
       }
 
-      .navbar-nav:nth-child(2) {
-        flex-basis: 42.5%;
-        justify-content: space-between;
-      }
-    }
-
-    .collapse.sub-menu {
-      position: absolute;
-      left: 0;
-      z-index: 1000;
-      width: 100%;
-      height: 400px;
-      padding: 0;
-      margin: 0;
-      background-color: #fff199;
-    }
-
-    .sub-menu__image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .sub-menu__header {
-      font-size: 20px;
-      color: #c63f3e;
-    }
-
-    .sub-menu__list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .sub-menu__item {
-      padding: 5px 0;
-    }
-
-    .sub-menu__item a {
-      font-size: 18px;
-      color: #c63f3e;
-      font-weight: 500;
-      text-decoration: none;
-    }
-
-    /* ================================================= banner ================================================ */
-    .homepage-banner {
-      width: 100%;
-    }
-
-    .homepage-banner img {
-      width: 100%;
-      height: auto;
-    }
-
-    /* ================================================= contact =============================================== */
-    .homepage-contact {
-      width: 100%;
-      margin: 5px 0;
-      padding: 0 5%;
-    }
-
-    .homepage-contact .thankyou-text {
-      font-size: calc(1.25rem + 1.4vw);
-      color: #ff221d;
-      font-weight: 400;
-      font-style: italic;
-      align-self: center;
-    }
-
-    .homepage-contact .card-image img {
-      display: block;
-      width: 100%;
-      height: auto;
-      padding: auto;
-    }
-
-    .homepage-contact .card-image {
-      width: 40%;
-      position: relative;
-      left: 50%;
-      top: 0;
-      transform: translate(-50%, 0);
-      border: 3px solid #ff221d;
-      border-radius: 5%;
-    }
-
-    .homepage-contact .card-title {
-      font-size: calc(0.6rem + 0.5vw);
-      color: #ff221d;
-      font-weight: 700;
-    }
-
-    .homepage-contact .card-text {
-      font-size: calc(0.6rem + 0.21vw);
-      color: #ff221d;
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .homepage-contact .btn {
-      font-size: calc(0.4rem + 0.21vw);
-      color: #ffffff;
-      font-weight: 500;
-      min-width: 60%;
-      background: linear-gradient(to right, #ff0700, #ff6600);
-      border-radius: 20px;
-    }
-
-    /* ============================================ logo amination =============================================== */
-    .logo-animation {
-      margin: 20px 0;
-      height: 150px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .logo-animation .logo {
-      width: 100px;
-      height: 100px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1000;
-    }
-
-    .logo-animation .logo-part {
-      width: 120px;
-      height: 120px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      animation: rotate 4s linear infinite;
-    }
-
-    @keyframes rotate {
-      0% {
-        transform: translate(-50%, -50%) rotate(0deg);
+      .discount .list-discount .left .list-group-item {
+        margin: 0;
+        padding: 0;
+        border: 1px solid #c63f3e;
+        border-radius: 50px;
+        background-color: #c63f3e;
       }
 
-      100% {
-        transform: translate(-50%, -50%) rotate(360deg);
+      .discount .list-discount .left .image-text span {
+        font-size: calc(1rem + 0.2vw);
+        color: #ffffff;
+        font-weight: 600;
+        margin-left: 1rem;
       }
-    }
 
-    /* ============================================ list service =============================================== */
-    .blog-service {
-      margin-bottom: 60px;
-    }
+      .discount .list-discount .left .discount-btn span {
+        font-size: calc(1.2rem + 0.2vw);
+        color: #fffa9e;
+        font-weight: 700;
+        font-style: italic;
+      }
 
-    .container-fluid h1 {
-      color: #ff221d;
-      margin: 20px;
-    }
+      .discount .list-discount .left .discount-btn a {
+        margin: 0 1rem;
+        font-size: calc(0.4rem + 0.2vw);
+        color: #ffffff;
+        font-weight: 500;
+        border: 1px solid #bc1a24;
+        border-radius: 50px;
+        background-color: #bc1a24;
+        box-shadow: 0 0px 10px 0px #bc1a24;
+      }
 
-    .blog-service .row {
-      justify-content: space-evenly !important;
-    }
+      .discount .list-discount .left .image-text img {
+        width: 50px;
+        height: 50px;
+        z-index: 100;
+      }
 
-    .blog-service .row>div {
-      position: relative;
-      margin-top: 40px;
-    }
+      .discount .list-discount .right {
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 50px;
+        box-shadow: 8px 3px 20px 1px #000000;
+      }
 
-    .blog-service .card {
-      position: relative;
-      border: 1px solid #ff221d;
-      border-radius: 30px;
-      max-width: 23rem;
-      background-color: #fefecc;
-      padding: 0;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, 0);
-    }
+      .discount .list-discount .right .list-group-item {
+        border: none;
+      }
 
-    .blog-service .card-img-top {
-      border-radius: 30px 30px 0 0;
-    }
+      .discount .list-discount .right .text h5 {
+        color: #bc1a24;
+        font-weight: 700;
+        font-size: calc(1.1rem + 0.1rem);
+      }
 
-    .blog-service .card-title {
-      font-size: calc(1rem + 0.2vw);
-      color: #c63f3e;
-      font-weight: 700;
-    }
+      .discount .list-discount .right .text p {
+        color: #c63f3e;
+        font-weight: 500;
+        font-size: calc(0.9rem + 0.1rem);
+      }
 
-    .blog-service .card-text {
-      font-size: calc(0.8rem + 0.2vw);
-      color: #c63f3e;
-      font-weight: 400;
-    }
+      .discount .list-discount .right .text a.btn {
+        color: #c63f3e;
+        font-weight: 500;
+        font-size: calc(1.1rem + 0.1rem);
+        border-radius: 30px;
+        background: linear-gradient(to top right, #f9d248, #fffa9e);
+        border: 1px solid #bc1a24;
+      }
 
-    .blog-service .btn {
-      font-size: calc(0.7rem + 0.2vw);
-      color: #c63f3e;
-      font-weight: 700;
-      min-width: 40%;
-      background-color: #fcfcab;
-      border: 1px solid #ff221d;
-      border-radius: 20px;
-    }
+      .discount .list-discount .right .image {
+        max-width: 40%;
+        border: 1px solid #bc1a24;
+        border-radius: 10px;
+        padding: 10px;
+        margin-left: 5px;
+      }
 
-    .blog-service .btn.active {
-      background-color: #c63f3e;
-      color: #fcfcab;
-    }
+      .discount .list-discount .right .image img {
+        width: 100%;
+        height: auto;
+      }
 
-    .blog-service .button-grp {
-      display: flex;
-      justify-content: space-around;
-    }
+      /* ============================================ gallery =============================================== */
 
-    /* ============================================ discount =============================================== */
-    .discount {
-      background: linear-gradient(to bottom, #fbf69b, #fff397);
-      width: 100%;
-    }
-
-    .discount .list-discount {
-      justify-content: center;
-      min-height: 600px;
-    }
-
-    .discount .list-discount>ul {
-      max-width: 40%;
-      justify-content: space-between;
-    }
-
-    .discount .list-discount .left .list-group-item {
-      margin: 0;
-      padding: 0;
-      border: 1px solid #c63f3e;
-      border-radius: 50px;
-      background-color: #c63f3e;
-    }
-
-    .discount .list-discount .left .image-text span {
-      font-size: calc(1rem + 0.2vw);
-      color: #ffffff;
-      font-weight: 600;
-      margin-left: 1rem;
-    }
-
-    .discount .list-discount .left .discount-btn span {
-      font-size: calc(1.2rem + 0.2vw);
-      color: #fffa9e;
-      font-weight: 700;
-      font-style: italic;
-    }
-
-    .discount .list-discount .left .discount-btn a {
-      margin: 0 1rem;
-      font-size: calc(0.4rem + 0.2vw);
-      color: #ffffff;
-      font-weight: 500;
-      border: 1px solid #bc1a24;
-      border-radius: 50px;
-      background-color: #bc1a24;
-      box-shadow: 0 0px 10px 0px #bc1a24;
-    }
-
-    .discount .list-discount .left .image-text img {
-      width: 50px;
-      height: 50px;
-      z-index: 100;
-    }
-
-    .discount .list-discount .right {
-      padding: 2rem;
-      background-color: #ffffff;
-      border-radius: 50px;
-      box-shadow: 8px 3px 20px 1px #000000;
-    }
-
-    .discount .list-discount .right .list-group-item {
-      border: none;
-    }
-
-    .discount .list-discount .right .text h5 {
-      color: #bc1a24;
-      font-weight: 700;
-      font-size: calc(1.1rem + 0.1rem);
-    }
-
-    .discount .list-discount .right .text p {
-      color: #c63f3e;
-      font-weight: 500;
-      font-size: calc(0.9rem + 0.1rem);
-    }
-
-    .discount .list-discount .right .text a.btn {
-      color: #c63f3e;
-      font-weight: 500;
-      font-size: calc(1.1rem + 0.1rem);
-      border-radius: 30px;
-      background: linear-gradient(to top right, #f9d248, #fffa9e);
-      border: 1px solid #bc1a24;
-    }
-
-    .discount .list-discount .right .image {
-      max-width: 40%;
-      border: 1px solid #bc1a24;
-      border-radius: 10px;
-      padding: 10px;
-      margin-left: 5px;
-    }
-
-    .discount .list-discount .right .image img {
-      width: 100%;
-      height: auto;
-    }
-
-    /* ============================================ gallery =============================================== */
-
-    .gallery {
-      margin: 40px 0;
-      padding: 0 40px 20px;
-      /* padding-bottom: 40px;
+      .gallery {
+        margin: 40px 0;
+        padding: 0 40px 20px;
+        /* padding-bottom: 40px;
         padding-left: 40px;
         padding-right: 40px; */
-      background-image: url("./static/images/background-gallery.png");
-      background-repeat: repeat-x;
-      background-size: contain;
-    }
-
-    .gallery-content {
-      width: 100%;
-    }
-
-    .gallery-content-img-extra {
-      margin-bottom: 10px;
-    }
-
-    .gallery-content-img-extra .img-fluid:hover {
-      cursor: pointer;
-      scale: 1.1;
-    }
-
-    .gallery-content-img-extra .img-fluid:active {
-      opacity: 0.6;
-    }
-
-    /* ================================================ footer =============================================== */
-    .footer {
-      background-color: #ffffcc;
-      padding: 60px;
-      color: #ff0000;
-    }
-
-    .footer h5 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-
-    .footer p {
-      margin: 0 0 8px 0;
-      padding: 0;
-    }
-
-    .footer .row>div {
-      padding: 0 20px;
-      padding-top: 40px;
-    }
-
-    .footer .row>div:first-child {
-      padding-top: 0;
-    }
-
-    .footer .mission>div {
-      text-align: center;
-    }
-
-    .footer .mission li {
-      text-align: justify;
-    }
-
-    .footer .mission img {
-      width: 120px;
-    }
-
-    .footer ul,
-    .footer li {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer .contact p {
-      display: flex;
-      align-items: center;
-    }
-
-    .footer .contact span {
-      display: inline-block;
-      margin-right: 4px;
-    }
-
-    .footer .contact span>svg {
-      border: 2px solid #b3b3b3;
-      padding: 4px;
-      border-radius: 8px;
-      box-shadow: 0 0 2px #b3b3b3;
-    }
-
-    .footer .logo-info img {
-      width: 200px;
-    }
-
-    .footer .policy li {
-      line-height: 1.8;
-    }
-
-    .footer .policy a {
-      color: #ff0000;
-      text-decoration: none;
-    }
-
-    .footer .policy a:hover {
-      text-decoration: underline;
-    }
-
-    @media (min-width: 1400px) {
-      .navbar-nav {
-        flex-basis: 42%;
-        justify-content: space-between;
+        background-image: url("./static/images/background-gallery.png");
+        background-repeat: repeat-x;
+        background-size: contain;
       }
 
-      .navbar-nav:nth-child(2) {
-        flex-basis: 42.5%;
-        justify-content: space-between;
+      .gallery-content {
+        width: 100%;
       }
-    }
-  </style>
-  <nav class="navbar navbar-dark" style="background-color: #ffffff">
-    <div class="container-fluid justify-content-end">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search" />
-        <button class="btn btn-outline-danger" type="submit">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search"
-            viewBox="0 0 16 16">
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-          </svg>
-        </button>
-      </form>
-    </div>
-  </nav>
-  <div class="accordion" id="accordionExample">
-    <nav class="navbar navbar-expand-xxl navbar-dark" style="background-color: #ff221d">
-      <div class="container-fluid">
-        <a class="navbar-brand logo-center" href="#">
-          <img src="./static/images/logoText.png" alt="Logo Ngoc Huong" />
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">GIỚI THIỆU</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" onclick="openSubmenuHandle(0)" data-bs-toggle="collapse"
-                href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne">
-                PHUN XĂM THẨM MỸ
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" onclick="openSubmenuHandle(1)" data-bs-toggle="collapse"
-                href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
-                LÀM ĐẸP DA
-              </a>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" onclick="openSubmenuHandle(2)" data-bs-toggle="collapse"
-                href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
-                MỸ PHẨM CAO CẤP
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" onclick="openSubmenuHandle(3)" data-bs-toggle="collapse"
-                href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">
-                TRIỆT LÔNG VĨNH VIỄN
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" onclick="openSubmenuHandle(4)" data-bs-toggle="collapse"
-                href="#collapseFive" role="button" aria-expanded="false" aria-controls="collapseFive">
-                DỊCH VỤ KHÁC
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">TIPS LÀM ĐẸP</a>
-            </li>
-          </ul>
-        </div>
+
+      .gallery-content-img-extra {
+        margin-bottom: 10px;
+      }
+
+      .gallery-content-img-extra .img-fluid:hover {
+        cursor: pointer;
+        scale: 1.1;
+      }
+
+      .gallery-content-img-extra .img-fluid:active {
+        opacity: 0.6;
+      }
+
+      /* ================================================ footer =============================================== */
+      .footer {
+        background-color: #ffffcc;
+        padding: 60px;
+        color: #ff0000;
+      }
+
+      .footer h5 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      .footer p {
+        margin: 0 0 8px 0;
+        padding: 0;
+      }
+
+      .footer .row > div {
+        padding: 0 20px;
+        padding-top: 40px;
+      }
+
+      .footer .row > div:first-child {
+        padding-top: 0;
+      }
+
+      .footer .mission > div {
+        text-align: center;
+      }
+
+      .footer .mission li {
+        text-align: justify;
+      }
+
+      .footer .mission img {
+        width: 120px;
+      }
+
+      .footer ul,
+      .footer li {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer .contact p {
+        display: flex;
+        align-items: center;
+      }
+
+      .footer .contact span {
+        display: inline-block;
+        margin-right: 4px;
+      }
+
+      .footer .contact span > svg {
+        border: 2px solid #b3b3b3;
+        padding: 4px;
+        border-radius: 8px;
+        box-shadow: 0 0 2px #b3b3b3;
+      }
+
+      .footer .logo-info img {
+        width: 200px;
+      }
+
+      .footer .policy li {
+        line-height: 1.8;
+      }
+
+      .footer .policy a {
+        color: #ff0000;
+        text-decoration: none;
+      }
+
+      .footer .policy a:hover {
+        text-decoration: underline;
+      }
+
+      @media (min-width: 1400px) {
+        .navbar-nav {
+          flex-basis: 42%;
+          justify-content: space-between;
+        }
+
+        .navbar-nav:nth-child(2) {
+          flex-basis: 42.5%;
+          justify-content: space-between;
+        }
+      }
+    </style>
+    <nav class="navbar navbar-dark" style="background-color: #ffffff">
+      <div class="container-fluid justify-content-end">
+        <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Tìm kiếm"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-danger" type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+              />
+            </svg>
+          </button>
+        </form>
       </div>
     </nav>
-    <div class="collapse sub-menu" id="collapseOne">
-      <div class="row h-100">
-        <div class="col-3 h-100">
-          <img class="sub-menu__image" src="./static/images/submenu-1.png" alt="" />
+    <div class="accordion" id="accordionExample">
+      <nav
+        class="navbar navbar-expand-xxl navbar-dark"
+        style="background-color: #ff221d"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand logo-center" href="#">
+            <img src="./static/images/logoText.png" alt="Logo Ngoc Huong" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-between"
+            id="navbarNavDropdown"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >GIỚI THIỆU</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(0)"
+                  data-bs-toggle="collapse"
+                  href="#collapseOne"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseOne"
+                >
+                  PHUN XĂM THẨM MỸ
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(1)"
+                  data-bs-toggle="collapse"
+                  href="#collapseTwo"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  LÀM ĐẸP DA
+                </a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(2)"
+                  data-bs-toggle="collapse"
+                  href="#collapseThree"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  MỸ PHẨM CAO CẤP
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(3)"
+                  data-bs-toggle="collapse"
+                  href="#collapseFour"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseFour"
+                >
+                  TRIỆT LÔNG VĨNH VIỄN
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(4)"
+                  data-bs-toggle="collapse"
+                  href="#collapseFive"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseFive"
+                >
+                  DỊCH VỤ KHÁC
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">TIPS LÀM ĐẸP</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-4 py-4">
-          <h4 class="sub-menu__header">PHUN VÀ CẤY MÀU MÔI</h4>
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item">
-              <a href="#"> Cấy Son 5D siêu mịn </a>
-            </li>
-            <li class="sub-menu__item">
-              <a href="#"> Phun môi Collagen </a>
-            </li>
-            <li class="sub-menu__item"><a href="#"> Cấy son tươi </a></li>
-          </ul>
-          <h4 class="sub-menu__header mt-4">PHUN VÀ CẤY SỢI MÀU LÔNG MÀY</h4>
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item">
-              <a href="#"> Cấy màu sợi lông mày 5D </a>
-            </li>
-            <li class="sub-menu__item">
-              <a href="#"> Điêu khắc tạo sợi lông mày </a>
-            </li>
-            <li class="sub-menu__item">
-              <a href="#"> Lông mày phủ mịn 3D </a>
-            </li>
-            <li class="sub-menu__item">
-              <a href="#"> Phun tán bột lông mày </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-4 py-4">
-          <h4 class="sub-menu__header">PHUN MÍ MẮT</h4>
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item"><a href="#"> Phun mí tự nhiên </a></li>
-            <li class="sub-menu__item">
-              <a href="#"> Phun mí trang điểm </a>
-            </li>
-            <li class="sub-menu__item">
-              <a href="#"> Phun mí mắt Phượng </a>
-            </li>
-          </ul>
+      </nav>
+      <div class="collapse sub-menu" id="collapseOne">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-1.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">PHUN VÀ CẤY MÀU MÔI</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Cấy Son 5D siêu mịn </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Phun môi Collagen </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Cấy son tươi </a></li>
+            </ul>
+            <h4 class="sub-menu__header mt-4">PHUN VÀ CẤY SỢI MÀU LÔNG MÀY</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Cấy màu sợi lông mày 5D </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Điêu khắc tạo sợi lông mày </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Lông mày phủ mịn 3D </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Phun tán bột lông mày </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">PHUN MÍ MẮT</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item"><a href="#"> Phun mí tự nhiên </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Phun mí trang điểm </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Phun mí mắt Phượng </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="collapse sub-menu" id="collapseTwo">
-      <div class="row h-100">
-        <div class="col-3 h-100">
-          <img class="sub-menu__image" src="./static/images/submenu-2.png" alt="" />
-        </div>
-        <div class="col-4 py-4">
-          <h4 class="sub-menu__header">ĐIỀU TRỊ DA THẨM MỸ</h4>
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item"><a href="#"> Điều trị nám </a></li>
-            <li class="sub-menu__item">
-              <a href="#"> Điều trị tàn nhang </a>
-            </li>
-            <li class="sub-menu__item">
-              <a href="#"> Điều trị đốm nâu, đồi mồi </a>
-            </li>
-            <li class="sub-menu__item"><a href="#"> Điều trị mụn </a></li>
-            <li class="sub-menu__item"><a href="#"> Điều trị sẹo rỗ </a></li>
-            <li class="sub-menu__item">
-              <a href="#"> Điều trị thâm mắt </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-4 py-4">
-          <h4 class="sub-menu__header">TRẺ HÓA & CHĂM SÓC DA</h4>
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item">
-              <a href="#"> Liệu tình peel lạnh </a>
-            </li>
-            <li class="sub-menu__item">
-              <a href="#"> Xóa nhăn meso boots </a>
-            </li>
-            <li class="sub-menu__item">
-              <a href="#"> Cấy collagen tươi </a>
-            </li>
-            <li class="sub-menu__item">
-              <a href="#"> Se khít lỗ chân lông </a>
-            </li>
-            <li class="sub-menu__item"><a href="#"> Cấy trắng da mặt </a></li>
-            <li class="sub-menu__item"><a href="#"> Giải độc da </a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="collapse sub-menu" id="collapseThree">
-      <div class="row h-100">
-        <div class="col-3 h-100">
-          <img class="sub-menu__image" src="./static/images/submenu-3.png" alt="" />
-        </div>
-        <div class="col-4 py-4">
-          <h4 class="sub-menu__header">CHĂM SÓC DA MẶT</h4>
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item"><a href="#"> Sữa rửa mặt </a></li>
-            <li class="sub-menu__item"><a href="#"> Tẩy trang </a></li>
-            <li class="sub-menu__item"><a href="#"> Toner </a></li>
-            <li class="sub-menu__item"><a href="#"> Serum </a></li>
-            <li class="sub-menu__item">
-              <a href="#"> Kem dưỡng nâng cấp chất lượng da </a>
-            </li>
-            <li class="sub-menu__item"><a href="#"> Chống nắng </a></li>
-            <li class="sub-menu__item"><a href="#"> Điều trị lão hóa </a></li>
-            <li class="sub-menu__item">
-              <a href="#"> Phục hồi cấu trúc da </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-4 py-4">
-          <h4 class="sub-menu__header">TOP THƯƠNG HIỆU</h4>
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item">
-              <a href="#"> Germain De Capucci </a>
-            </li>
-          </ul>
+      <div class="collapse sub-menu" id="collapseTwo">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-2.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">ĐIỀU TRỊ DA THẨM MỸ</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item"><a href="#"> Điều trị nám </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Điều trị tàn nhang </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Điều trị đốm nâu, đồi mồi </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Điều trị mụn </a></li>
+              <li class="sub-menu__item"><a href="#"> Điều trị sẹo rỗ </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Điều trị thâm mắt </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">TRẺ HÓA & CHĂM SÓC DA</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Liệu tình peel lạnh </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Xóa nhăn meso boots </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Cấy collagen tươi </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Se khít lỗ chân lông </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Cấy trắng da mặt </a></li>
+              <li class="sub-menu__item"><a href="#"> Giải độc da </a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="collapse sub-menu" id="collapseFour">
-      <div class="row h-100">
-        <div class="col-3 h-100">
-          <img class="sub-menu__image" src="./static/images/submenu-4.png" alt="" />
-        </div>
-        <div class="col-4 py-4">
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item"><a href="#"> Triệt lông nách </a></li>
-            <li class="sub-menu__item"><a href="#"> Triệt lông tay </a></li>
-            <li class="sub-menu__item"><a href="#"> Triệt lông chân </a></li>
-            <li class="sub-menu__item">
-              <a href="#"> Triệt lông vùng bikini </a>
-            </li>
-            <li class="sub-menu__item"><a href="#"> Triệt lông mặt </a></li>
-            <li class="sub-menu__item"><a href="#"> Triệt lông mép </a></li>
-            <li class="sub-menu__item">
-              <a href="#"> Triệt lông toàn thân </a>
-            </li>
-          </ul>
+      <div class="collapse sub-menu" id="collapseThree">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-3.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">CHĂM SÓC DA MẶT</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item"><a href="#"> Sữa rửa mặt </a></li>
+              <li class="sub-menu__item"><a href="#"> Tẩy trang </a></li>
+              <li class="sub-menu__item"><a href="#"> Toner </a></li>
+              <li class="sub-menu__item"><a href="#"> Serum </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Kem dưỡng nâng cấp chất lượng da </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Chống nắng </a></li>
+              <li class="sub-menu__item"><a href="#"> Điều trị lão hóa </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Phục hồi cấu trúc da </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">TOP THƯƠNG HIỆU</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Germain De Capucci </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="collapse sub-menu" id="collapseFour">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-4.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item"><a href="#"> Triệt lông nách </a></li>
+              <li class="sub-menu__item"><a href="#"> Triệt lông tay </a></li>
+              <li class="sub-menu__item"><a href="#"> Triệt lông chân </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Triệt lông vùng bikini </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Triệt lông mặt </a></li>
+              <li class="sub-menu__item"><a href="#"> Triệt lông mép </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Triệt lông toàn thân </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <div class="collapse sub-menu" id="collapseFive">
-      <div class="row h-100">
-        <div class="col-3 h-100">
-          <img class="sub-menu__image" src="./static/images/submenu-4.png" alt="" />
-        </div>
-        <div class="col-4 py-4">
-          <h4 class="sub-menu__header">GIẢM BÉO</h4>
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item">
-              <a href="#"> Giảm mỡ vùng bụng </a>
-            </li>
-            <li class="sub-menu__item"><a href="#"> Giảm mỡ vùng đùi </a></li>
-            <li class="sub-menu__item">
-              <a href="#"> Giảm mỡ vùng bắp tay </a>
-            </li>
-            <li class="sub-menu__item"><a href="#"> Giảm mỡ sau sinh </a></li>
-          </ul>
-        </div>
-        <div class="col-4 py-4">
-          <h4 class="sub-menu__header">LÀM TRẮNG DA</h4>
-          <ul class="sub-menu__list">
-            <li class="sub-menu__item">
-              <a href="#"> Tắm trắng da body </a>
-            </li>
+      <div class="collapse sub-menu" id="collapseFive">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-4.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">GIẢM BÉO</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Giảm mỡ vùng bụng </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Giảm mỡ vùng đùi </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Giảm mỡ vùng bắp tay </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Giảm mỡ sau sinh </a></li>
+            </ul>
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">LÀM TRẮNG DA</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Tắm trắng da body </a>
+              </li>
 
             <li class="sub-menu__item">
               <a href="#"> Phun trắng da mặt </a>
@@ -1032,9 +1121,8 @@
                   onclick="handleOnClick('./static/images/img5.png')" style="height: 186px; width: 332px" />
               </div>
               <div class="gallery-content-img-extra">
-                <img src="./static/images/img6.png" class="img-fluid"
-                  onclick="handleOnClick('./static/images/img6.png')" alt="co-so-vat-chat-ngoc-huong-anh-6"
-                  style="height: 186px; width: 332px" />
+                <img src="./static/images/img6.png" class="img-fluid" onclick="handleOnClick('./static/images/img6.png')"
+                  alt="co-so-vat-chat-ngoc-huong-anh-6" style="height: 186px; width: 332px" />
               </div>
             </div>
           </div>
@@ -1143,41 +1231,76 @@
       justify-content: center;
     }
 
-    .notification {
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      font-size: 18px;
-      color: #333333;
-      text-align: center;
-      max-width: 600px;
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    .notification::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-  </style>
-  <div class="overlay">
-    <div class="notification">Trang chủ Ngọc Hường đang được nâng cấp<br>Hẹn gặp lại vào một ngày sớm nhất</div>
-  </div>
-  <script>
-    const imgShowing = document.querySelector(".show-image");
-    function handleOnClick(linkImg) {
-      if (linkImg !== imgShowing.getAttribute("src")) {
-        imgShowing.setAttribute("src", linkImg);
+      .notification {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        font-size: 18px;
+        color: #333333;
+        text-align: center;
+        max-width: 600px;
+        font-family: "Quicksand", sans-serif;
       }
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
-</body>
 
+      .notification::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+    <!-- <div class="overlay">
+    <div class="notification">Trang chủ Ngọc Hường đang được nâng cấp<br>Hẹn gặp lại vào một ngày sớm nhất</div>
+  </div> -->
+    <script>
+      const imgShowing = document.querySelector(".show-image");
+      function handleOnClick(linkImg) {
+        if (linkImg !== imgShowing.getAttribute("src")) {
+          imgShowing.setAttribute("src", linkImg);
+        }
+      }
+    </script>
+    <script>
+      function resetCollapse(index) {
+        var collapseElements = document.querySelectorAll(".collapse");
+        collapseElements.forEach(function (collapseEl, i) {
+          collapseEl.classList.remove("show");
+        });
+      }
+
+      // Call this function whenever you want to reset the collapse elements
+      const openSubmenuHandle = (index) => {
+        resetCollapse(index);
+      };
+
+      // Get all the navigation items
+      var navItems = document.querySelectorAll(".navbar-nav .nav-item");
+
+      // Function to handle click on nav items
+      function handleNavItemClick(event) {
+        // Remove 'active' class from all nav items
+        navItems.forEach(function (item) {
+          item.classList.remove("active");
+        });
+
+        // Add 'active' class to the clicked nav item
+        event.currentTarget.classList.add("active");
+      }
+
+      // Attach click event listeners to each nav item
+      navItems.forEach(function (item) {
+        item.addEventListener("click", handleNavItemClick);
+      });
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
