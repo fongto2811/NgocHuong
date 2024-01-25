@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      /* ================================================= menu ================================================== */
+      .logo-center img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .logo-center {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -55%);
+        top: 0;
+        margin: 0;
+        padding: 5px 20px 5px 25px;
+        width: 200px;
+        background-color: #ffffff;
+        border-radius: 15px;
+      }
+
+      .container-fluid {
+        position: relative;
+      }
+
+      .dropdown-toggle::after {
+        display: none;
+      }
+
+      .nav-item a {
+        color: #ffffff !important;
+        font-weight: 400;
+      }
+
+      @media (min-width: 1400px) {
+        .navbar-nav {
+          flex-basis: 42%;
+          justify-content: space-between;
+        }
+
+        .navbar-nav:nth-child(2) {
+          flex-basis: 42.5%;
+          justify-content: space-between;
+        }
+      }
+
+      .collapse.sub-menu {
+        position: absolute;
+        left: 0;
+        z-index: 1000;
+        width: 100%;
+        height: 400px;
+        padding: 0;
+        margin: 0;
+        background-color: #fff199;
+      }
+
+      .collapsing {
+        display: none !important;
+      }
+
+      .sub-menu__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .sub-menu__header {
+        font-size: 20px;
+        color: #c63f3e;
+      }
+
+      .sub-menu__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sub-menu__item {
+        padding: 5px 0;
+      }
+
+      .sub-menu__item a {
+        font-size: 18px;
+        color: #c63f3e;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      /* ===================== card service ========================= */
+      a {
+        text-decoration: none;
+      }
+      .card {
+        box-shadow: 0px 0px 10px gray;
+      }
+      .breadcrumb-item a,
+      .list-group-item a {
+        text-decoration: none;
+        /* font-size: medium; */
+        font-weight: 400;
+        color: #d21d1a;
+      }
+      .list-group-item {
+        padding: 0.5rem 0;
+      }
+      .list-group-flush > .list-group-item {
+        /* border-width: 0 0 1px 0 #d21d1a; */
+        border-color: #d21d1a;
+      }
+      .resize-img {
+        height: 542px;
+        width: 100%;
+      }
+      @media (min-width: 768px) and (max-width: 1024px) {
+        .resize-img {
+          height: 342px;
+          width: 100%;
+        }
+      }
+      @media (max-width: 426px) {
+        .resize-img {
+          height: 242px;
+          width: 100%;
+        }
+      }
+      .text-service {
+        color: #d21d1a;
+        font-weight: 600;
+      }
+
+      .text-desc-service {
+        background-color: #f8eda5;
+        margin-top: 16px;
+        padding: 4px 8px;
+        border-radius: 12px;
+      }
+
+      .list-detail-title {
+        color: black;
+        font-size: larger;
+        font-weight: 600;
+      }
+      .list-detail-title:hover {
+        color: rgb(51, 51, 51);
+      }
+
+      .header-service {
+        background: linear-gradient(to right, #d41f1c 0%, #fda03c 100%);
+        text-transform: uppercase;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .list-detail .list-group-item {
+        border: none;
+        background-color: #f8eda5;
+      }
+
+      .list-detail .list-group-item a {
+        color: black;
+      }
+
+      .list-group .list-group-item-child-final {
+        padding-bottom: 0;
+      }
+
+      .post-detail-title {
+        text-align: center;
+        color: #d21d1a;
+        padding: 8px;
+        text-transform: uppercase;
+      }
+
+      .slick-slider {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .image-slick {
+        border: 4px solid #f3c051;
+        border-radius: 16px;
+      }
+
+      .slick-prev:before,
+      .slick-next:before {
+        background-color: transparent;
+        color: #d21d1a;
+      }
+
+      /* ===================== footer ========================= */
+      .footer {
+        background-color: #ffffcc;
+        padding: 60px;
+        color: #ff0000;
+      }
+
+      .footer h5 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      .footer p {
+        margin: 0 0 8px 0;
+        padding: 0;
+      }
+
+      .footer .row > div {
+        padding: 0 20px;
+        padding-top: 40px;
+      }
+
+      .footer .row > div:first-child {
+        padding-top: 0;
+      }
+
+      .footer .mission > div {
+        text-align: center;
+      }
+
+      .footer .mission li {
+        text-align: justify;
+      }
+
+      .footer .mission img {
+        width: 120px;
+      }
+
+      .footer ul,
+      .footer li {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer .contact p {
+        display: flex;
+        align-items: center;
+      }
+
+      .footer .contact span {
+        display: inline-block;
+        margin-right: 4px;
+      }
+
+      .footer .contact span > svg {
+        border: 2px solid #b3b3b3;
+        padding: 4px;
+        border-radius: 8px;
+        box-shadow: 0 0 2px #b3b3b3;
+      }
+
+      .footer .logo-info img {
+        width: 200px;
+      }
+
+      .footer .policy li {
+        line-height: 1.8;
+      }
+
+      .footer .policy a {
+        color: #ff0000;
+        text-decoration: none;
+      }
+
+      .footer .policy a:hover {
+        text-decoration: underline;
+      }
+
+      @media (min-width: 1400px) {
+        .navbar-nav {
+          flex-basis: 42%;
+          justify-content: space-between;
+        }
+
+        .navbar-nav:nth-child(2) {
+          flex-basis: 42.5%;
+          justify-content: space-between;
+        }
+      }
+    </style>
+    <nav class="navbar navbar-dark" style="background-color: #ffffff">
+      <div class="container-fluid justify-content-end">
+        <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Tìm kiếm"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-danger" type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </nav>
+    <div class="accordion" id="accordionExample">
+      <nav
+        class="navbar navbar-expand-xxl navbar-dark"
+        style="background-color: #ff221d"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand logo-center" href="#">
+            <img src="./static/images/logoText.png" alt="Logo Ngoc Huong" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-between"
+            id="navbarNavDropdown"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >GIỚI THIỆU</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(0)"
+                  data-bs-toggle="collapse"
+                  href="#collapseOne"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseOne"
+                >
+                  PHUN XĂM THẨM MỸ
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(1)"
+                  data-bs-toggle="collapse"
+                  href="#collapseTwo"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  LÀM ĐẸP DA
+                </a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(2)"
+                  data-bs-toggle="collapse"
+                  href="#collapseThree"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  MỸ PHẨM CAO CẤP
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(3)"
+                  data-bs-toggle="collapse"
+                  href="#collapseFour"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseFour"
+                >
+                  TRIỆT LÔNG VĨNH VIỄN
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  onclick="openSubmenuHandle(4)"
+                  data-bs-toggle="collapse"
+                  href="#collapseFive"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseFive"
+                >
+                  DỊCH VỤ KHÁC
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">TIPS LÀM ĐẸP</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="collapse sub-menu" id="collapseOne">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-1.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">PHUN VÀ CẤY MÀU MÔI</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Cấy Son 5D siêu mịn </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Phun môi Collagen </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Cấy son tươi </a></li>
+            </ul>
+            <h4 class="sub-menu__header mt-4">PHUN VÀ CẤY SỢI MÀU LÔNG MÀY</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Cấy màu sợi lông mày 5D </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Điêu khắc tạo sợi lông mày </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Lông mày phủ mịn 3D </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Phun tán bột lông mày </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">PHUN MÍ MẮT</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item"><a href="#"> Phun mí tự nhiên </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Phun mí trang điểm </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Phun mí mắt Phượng </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="collapse sub-menu" id="collapseTwo">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-2.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">ĐIỀU TRỊ DA THẨM MỸ</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item"><a href="#"> Điều trị nám </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Điều trị tàn nhang </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Điều trị đốm nâu, đồi mồi </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Điều trị mụn </a></li>
+              <li class="sub-menu__item"><a href="#"> Điều trị sẹo rỗ </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Điều trị thâm mắt </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">TRẺ HÓA & CHĂM SÓC DA</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Liệu tình peel lạnh </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Xóa nhăn meso boots </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Cấy collagen tươi </a>
+              </li>
+              <li class="sub-menu__item">
+                <a href="#"> Se khít lỗ chân lông </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Cấy trắng da mặt </a></li>
+              <li class="sub-menu__item"><a href="#"> Giải độc da </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="collapse sub-menu" id="collapseThree">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-3.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">CHĂM SÓC DA MẶT</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item"><a href="#"> Sữa rửa mặt </a></li>
+              <li class="sub-menu__item"><a href="#"> Tẩy trang </a></li>
+              <li class="sub-menu__item"><a href="#"> Toner </a></li>
+              <li class="sub-menu__item"><a href="#"> Serum </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Kem dưỡng nâng cấp chất lượng da </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Chống nắng </a></li>
+              <li class="sub-menu__item"><a href="#"> Điều trị lão hóa </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Phục hồi cấu trúc da </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">TOP THƯƠNG HIỆU</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Germain De Capucci </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="collapse sub-menu" id="collapseFour">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-4.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item"><a href="#"> Triệt lông nách </a></li>
+              <li class="sub-menu__item"><a href="#"> Triệt lông tay </a></li>
+              <li class="sub-menu__item"><a href="#"> Triệt lông chân </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Triệt lông vùng bikini </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Triệt lông mặt </a></li>
+              <li class="sub-menu__item"><a href="#"> Triệt lông mép </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Triệt lông toàn thân </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse sub-menu" id="collapseFive">
+        <div class="row h-100">
+          <div class="col-3 h-100">
+            <img
+              class="sub-menu__image"
+              src="./static/images/submenu-4.png"
+              alt=""
+            />
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">GIẢM BÉO</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Giảm mỡ vùng bụng </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Giảm mỡ vùng đùi </a></li>
+              <li class="sub-menu__item">
+                <a href="#"> Giảm mỡ vùng bắp tay </a>
+              </li>
+              <li class="sub-menu__item"><a href="#"> Giảm mỡ sau sinh </a></li>
+            </ul>
+          </div>
+          <div class="col-4 py-4">
+            <h4 class="sub-menu__header">LÀM TRẮNG DA</h4>
+            <ul class="sub-menu__list">
+              <li class="sub-menu__item">
+                <a href="#"> Tắm trắng da body </a>
+              </li>
+
+              <li class="sub-menu__item">
+                <a href="#"> Phun trắng da mặt </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row my-5">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                  <li class="breadcrumb-item">
+                    <a href="#">Phun xăm thẩm mỹ</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <a href="#">Cấy son 5D siêu mịn</a>
+                  </li>
+                </ol>
+              </nav>
+              <p class="card-text text-service">
+                Cấy son màu siêu mịn mướt, nguyên liệu cao cấp hàng đầu thế
+                giới, giữ màu cực lâu từ 5 - 10 năm
+              </p>
+              <img
+                src="./static/images/phun-moi-service.png"
+                class="card-img-top resize-img"
+                alt="..."
+              />
+              <p class="card-text text-desc-service">
+                Cấy son màu siêu mịn mướt, nguyên liệu cao cấp hàng đầu thế
+                giới, giữ màu cực lâu từ 5 - 10 năm Cấy son màu siêu mịn mướt,
+                nguyên liệu cao cấp hàng đầu thế giới, giữ màu cực lâu từ 5 - 10
+                năm Cấy son màu siêu mịn mướt, nguyên liệu cao cấp hàng đầu thế
+                giới, giữ màu cực lâu từ 5 - 10 năm Cấy son màu siêu mịn mướt,
+                nguyên liệu cao cấp hàng đầu thế giới, giữ màu cực lâu từ 5 - 10
+                năm
+              </p>
+              <div class="text-desc-service">
+                <a
+                  class="list-detail-title"
+                  data-bs-toggle="collapse"
+                  href="#multiCollapseExample1"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="multiCollapseExample1"
+                  ><i class="fas fa-list-ul"></i> Nội dung chi tiết</a
+                >
+                <div class="row">
+                  <div class="col">
+                    <div
+                      class="collapse multi-collapse"
+                      id="multiCollapseExample1"
+                    >
+                      <ol class="list-group list-group-numbered list-detail">
+                        <li class="list-group-item">
+                          <a href="#post1">Cấy son tươi là gì</a>
+                        </li>
+                        <li class="list-group-item">
+                          <a href="#post2"> Ưu điểm của dịch vụ cấy son 5D </a>
+                        </li>
+                        <li class="list-group-item">
+                          Đối tượng phù hợp để cấy son 5D
+                        </li>
+                        <li class="list-group-item">
+                          Quy trình thực hiện dịch vụ cấy son 5D
+                          <ol
+                            class="list-group list-group-numbered list-detail ms-3"
+                          >
+                            <li class="list-group-item">
+                              Tư vấn dáng khuôn môi
+                            </li>
+                            <li
+                              class="list-group-item list-group-item-child-final"
+                            >
+                              Phát thảo dáng khuôn môi
+                            </li>
+                          </ol>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="post1" class="post-detail my-3">
+                <h5>Chi tiết bài viết</h5>
+                <p>...</p>
+                <img
+                  class="card-img-top resize-img"
+                  src="./static/images/phun-moi-service-1.png"
+                  alt=""
+                />
+              </div>
+              <div id="post2" class="post-detail my-3">
+                <h5>Chi tiết bài viết</h5>
+                <p>...</p>
+                <div class="text-desc-service pb-4">
+                  <h5 class="post-detail-title">
+                    Hình ảnh thực tế khách hàng cấy son 5D tại hệ thống thẩm mỹ
+                    viện Ngọc Hường
+                  </h5>
+                  <div class="slick-slider">
+                    <div>
+                      <img
+                        class="card-img-top resize-img image-slick"
+                        src="./static/images/phun-moi-service-1.png"
+                        alt="Image 1"
+                      />
+                    </div>
+                    <div>
+                      <img
+                        class="card-img-top resize-img image-slick"
+                        src="./static/images/phun-moi-service.png"
+                        alt="Image 2"
+                      />
+                    </div>
+                    <div>
+                      <img
+                        class="card-img-top resize-img image-slick"
+                        src="./static/images/phun-moi-service-2.png"
+                        alt="Image 3"
+                      />
+                    </div>
+                    <!-- Thêm nhiều slide khác nếu cần -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-none d-md-block col-md-4">
+          <h4 class="header-service">Dịch vụ nổi bật</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-service">
+              <a href="#">Cấy son tươi</a>
+            </li>
+            <li class="list-group-item text-service">
+              <a href="#">Phun môi Collagen</a>
+            </li>
+            <li class="list-group-item text-service">
+              <a href="#">Khắc sợi lông mày</a>
+            </li>
+          </ul>
+          <h4 class="header-service mt-2">Tin tức làm đẹp mới nhất</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-service">
+              <a href="#">Cách chăm sóc môi sau phun xăm</a>
+            </li>
+            <li class="list-group-item text-service">
+              <a href="#">Màu môi thường được giữ sau bao lâu?</a>
+            </li>
+            <li class="list-group-item text-service">
+              <a href="#">Nên làm môi bằng công nghệ gì?</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="row">
+        <div class="col-lg-3 mission">
+          <div>
+            <img src="./static/images/logoText.png" alt="logo-ngoc-huong" />
+          </div>
+          <ul>
+            <li>
+              - Đối với xã hội: Làm cho người phụ nữ đẹp hơn, tự tin hơn và góp
+              phần xây dựng một thị trường làm đẹp an toàn.
+            </li>
+            <li>
+              - Đối với nhân viên: Tạo ra một môi trường làm việc chuyên nghiệp,
+              đoàn kết chia sẻ và có ý thức cao trong công việc phát triển năng
+              lực bản thân.
+            </li>
+            <li>
+              - Đối với khách hàng: Mang đến những sản phẩm đẹp nhất, chất lượng
+              nhất và hài lòng nhất đến từng khách hàng.
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-2 contact">
+          <div>
+            <h5>THÔNG TIN LIÊN HỆ</h5>
+            <p>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                  class="bi bi-telephone"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+                  />
+                </svg>
+              </span>
+              Hotline &#10072; 1900 7067
+            </p>
+          </div>
+          <div>
+            <h5>THỜI GIAN LÀM VIỆC</h5>
+            <p>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                  class="bi bi-clock-history"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483m.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535m-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"
+                  />
+                  <path
+                    d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z"
+                  />
+                  <path
+                    d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5"
+                  />
+                </svg>
+              </span>
+              8h30 - 19h00
+            </p>
+            <p>
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                  class="bi bi-calendar-week"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"
+                  />
+                  <path
+                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"
+                  />
+                </svg>
+              </span>
+              Thứ 2 - Chủ nhật
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <h5>CÔNG TY TNHH THẨM MỸ VIỆN NGỌC HƯỜNG</h5>
+          <p>GPĐKKD Số: 0313244879</p>
+          <p>Email: phucngochuongco@gmail.com</p>
+          <div class="logo-info">
+            <img
+              src="./static/images/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png"
+              alt="logo-ngoc-huong"
+            />
+          </div>
+        </div>
+        <div class="col-lg-3 policy">
+          <h5>CHÍNH SÁCH</h5>
+          <ul>
+            <li><a href="">Chính sách bảo mật thông tin</a></li>
+            <li><a href="">Chính sách bảo hành</a></li>
+            <li><a href="">Chính sách thanh toán</a></li>
+            <li><a href="">Chính sách vận chuyển và giao nhận</a></li>
+            <li><a href="">Tuyển dụng</a></li>
+            <li><a href="">Tiếp nhận ý kiến phản ánh</a></li>
+            <li><a href="">Hệ thống chi nhánh</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function resetCollapse(index) {
+      var collapseElements = document.querySelectorAll(".collapse");
+      collapseElements.forEach(function (collapseEl, i) {
+        collapseEl.classList.remove("show");
+      });
+    }
+
+    // Call this function whenever you want to reset the collapse elements
+    const openSubmenuHandle = (index) => {
+      resetCollapse(index);
+    };
+
+    // Get all the navigation items
+    var navItems = document.querySelectorAll(".navbar-nav .nav-item");
+
+    // Function to handle click on nav items
+    function handleNavItemClick(event) {
+      // Remove 'active' class from all nav items
+      navItems.forEach(function (item) {
+        item.classList.remove("active");
+      });
+
+      // Add 'active' class to the clicked nav item
+      event.currentTarget.classList.add("active");
+    }
+
+    // Attach click event listeners to each nav item
+    navItems.forEach(function (item) {
+      item.addEventListener("click", handleNavItemClick);
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      $(".slick-slider").slick({
+        // Cấu hình tùy chọn của Slick Slider
+        autoplay: false,
+        autoplaySpeed: 2000,
+        dots: false,
+        prevArrow:
+          '<a class="slick-prev btn-slick"><i class="fas fa-chevron-left"></i></a>',
+        nextArrow:
+          '<a class="slick-next btn-slick"><i class="fas fa-chevron-right"></i></a>',
+        // Thêm các tùy chọn khác nếu cần
+      });
+    });
+  </script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://kit.fontawesome.com/7b83e5a0d6.js"
+    crossorigin="anonymous"
+  ></script>
+</html>
