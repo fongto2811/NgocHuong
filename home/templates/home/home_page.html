@@ -1,11 +1,7 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block body_class %}template-homepage{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/slick.css' %}">
-<link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+{% extends "base.html" %} {% load static %}
+{% block body_class%} template-homepage {% endblock %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/slick.css' %}" />
+<link rel="stylesheet" href="{% static 'css/slick-theme.css' %}" />
 <style>
     body {
         padding: 0;
@@ -374,13 +370,20 @@
     }
 
     .text-post-item,
-    .time-post-item {
+    .time-post-item,
+    .text-post-item-other,
+    .time-post-item-other {
         width: 460px;
         color: #d21d1a;
         text-align: left;
         margin: 4px 0;
         font-size: large;
         font-weight: 500;
+    }
+
+    .text-post-item-other,
+    .time-post-item-other {
+        width: 100%;
     }
 
     .time-post-item {
@@ -393,9 +396,7 @@
         color: rgb(254, 213, 80) !important;
     }
 </style>
-{% endblock extra_css %}
-
-{% block content %}
+{% endblock extra_css %} {% block content %}
 <div class="homepage-banner">
     <img src="{% static 'images/banner-homepage.png' %}" class="img-fluid" alt="banner ngoc huong" />
 </div>
@@ -414,8 +415,7 @@
                             <img src="{% static 'images/dat-lich-lam-dep.png' %}" alt="dat lich lam dep" />
                         </div>
                         <p class="card-text">
-                            Đặt lịch hẹn để được tư vấn,<br />soi da miễn phí và nhận ưu
-                            đãi
+                            Đặt lịch hẹn để được tư vấn,<br />soi da miễn phí và nhận ưu đãi
                         </p>
                         <a href="#" class="btn">TÔI MUỐN ĐẶT LỊCH HẸN</a>
                     </div>
@@ -427,8 +427,7 @@
                             <img src="{% static 'images/lien-he-ngoc-huong.png' %}" alt="lien he ngoc huong" />
                         </div>
                         <p class="card-text">
-                            Gọi ngay cho Ngọc Hường để<br />được tư vấn trực tiếp và chi
-                            tiết
+                            Gọi ngay cho Ngọc Hường để<br />được tư vấn trực tiếp và chi tiết
                         </p>
                         <a href="#" class="btn">GỌI NGAY</a>
                     </div>
@@ -451,9 +450,8 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">LÀM ĐẸP DA TẬN GỐC</h5>
                     <p class="card-text">
-                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám
-                        tàn nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn
-                        thịt
+                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám tàn
+                        nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn thịt
                     </p>
                     <div class="button-grp">
                         <a href="#" class="btn active">Nhận tư vấn</a>
@@ -469,9 +467,8 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">LÀM ĐẸP DA TẬN GỐC</h5>
                     <p class="card-text">
-                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám
-                        tàn nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn
-                        thịt
+                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám tàn
+                        nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn thịt
                     </p>
                     <div class="button-grp">
                         <a href="#" class="btn active">Nhận tư vấn</a>
@@ -487,9 +484,8 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">LÀM ĐẸP DA TẬN GỐC</h5>
                     <p class="card-text">
-                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám
-                        tàn nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn
-                        thịt
+                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám tàn
+                        nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn thịt
                     </p>
                     <div class="button-grp">
                         <a href="#" class="btn active">Nhận tư vấn</a>
@@ -505,9 +501,8 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">LÀM ĐẸP DA TẬN GỐC</h5>
                     <p class="card-text">
-                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám
-                        tàn nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn
-                        thịt
+                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám tàn
+                        nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn thịt
                     </p>
                     <div class="button-grp">
                         <a href="#" class="btn active">Nhận tư vấn</a>
@@ -523,9 +518,8 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">LÀM ĐẸP DA TẬN GỐC</h5>
                     <p class="card-text">
-                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám
-                        tàn nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn
-                        thịt
+                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám tàn
+                        nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn thịt
                     </p>
                     <div class="button-grp">
                         <a href="#" class="btn active">Nhận tư vấn</a>
@@ -541,9 +535,8 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">LÀM ĐẸP DA TẬN GỐC</h5>
                     <p class="card-text">
-                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám
-                        tàn nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn
-                        thịt
+                        Điều trị da gồm các dịch vụ chính: Điều trị mụn, Điều trị nám tàn
+                        nhang, Điều trị sẹo, Điều trị thâm, Xóa nốt ruồi, Xóa mụn thịt
                     </p>
                     <div class="button-grp">
                         <a href="#" class="btn active">Nhận tư vấn</a>
@@ -720,9 +713,7 @@
     </div>
 </div>
 <div class="container-fluid customer-experience-section my-4">
-    <h1 class="text-center">
-        Hình ảnh thực tế khách hàng thực tế đã làm đẹp
-    </h1>
+    <h1 class="text-center">Hình ảnh thực tế khách hàng thực tế đã làm đẹp</h1>
     <div role="tabpanel">
         <div class="list-group branchs" id="myList" role="tablist">
             <button class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#cayson5d"
@@ -827,8 +818,8 @@
                     alt="Image 3" />
                 <div class="d-flex justify-content-center">
                     <p class="text-post-item">
-                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng
-                        chuẩn nhất
+                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng chuẩn
+                        nhất
                     </p>
                 </div>
                 <div class="d-flex justify-content-center">
@@ -841,52 +832,50 @@
                 <img class="card-img-top image-post-item-other" src="{% static 'images/phun-moi-service-2.png' %}"
                     alt="Image 3" />
                 <div class="ms-3">
-                    <p class="text-post-item">
-                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng
-                        chuẩn nhất
+                    <p class="text-post-item-other">
+                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng chuẩn
+                        nhất
                     </p>
-                    <p class="time-post-item">13/11/2023</p>
+                    <p class="time-post-item-other">13/11/2023</p>
                 </div>
             </div>
             <div class="m-3 d-flex justify-content-start">
                 <img class="card-img-top image-post-item-other" src="{% static 'images/phun-moi-service-2.png' %}"
                     alt="Image 3" />
                 <div class="ms-3">
-                    <p class="text-post-item">
-                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng
-                        chuẩn nhất
+                    <p class="text-post-item-other">
+                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng chuẩn
+                        nhất
                     </p>
-                    <p class="time-post-item">13/11/2023</p>
+                    <p class="time-post-item-other">13/11/2023</p>
                 </div>
             </div>
             <div class="m-3 d-flex justify-content-start">
                 <img class="card-img-top image-post-item-other" src="{% static 'images/phun-moi-service-2.png' %}"
                     alt="Image 3" />
                 <div class="ms-3">
-                    <p class="text-post-item">
-                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng
-                        chuẩn nhất
+                    <p class="text-post-item-other">
+                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng chuẩn
+                        nhất
                     </p>
-                    <p class="time-post-item">13/11/2023</p>
+                    <p class="time-post-item-other">13/11/2023</p>
                 </div>
             </div>
             <div class="m-3 d-flex justify-content-start">
                 <img class="card-img-top image-post-item-other" src="{% static 'images/phun-moi-service-2.png' %}"
                     alt="Image 3" />
                 <div class="ms-3">
-                    <p class="text-post-item">
-                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng
-                        chuẩn nhất
+                    <p class="text-post-item-other">
+                        Peel da bao nhiêu phút? 9 bước trong Quy trình peel da đúng chuẩn
+                        nhất
                     </p>
-                    <p class="time-post-item">13/11/2023</p>
+                    <p class="time-post-item-other">13/11/2023</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block extra_js %}
+{% endblock %} {% block extra_js %}
 <script type="text/javascript" src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
 <script>
@@ -907,7 +896,7 @@
             prevArrow: false,
             nextArrow: false,
             // Thêm các tùy chọn khác nếu cần
-        })
+        });
     });
 </script>
 {% endblock %}
