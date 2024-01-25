@@ -1,0 +1,20 @@
+.Draftail-block--blockquote {
+    border-inline-start: 0.5rem solid var(--bs-info) !important;
+    border-radius: 0.25rem;
+    background-color: var(--bs-light);
+    font-style: normal;
+    font-family: var(--font-family-headings);
+    font-weight: 500;
+    padding: 1.2rem 2rem !important;
+    margin: 1.6rem 0;
+    color: var(--bs-dark);
+}
+.Draftail-block--LEFT-ALIGN .public-DraftStyleDefault-ltr {
+    text-align: start;
+}
+.Draftail-block--CENTRE-ALIGN .public-DraftStyleDefault-ltr {
+    text-align: center;
+}
+.Draftail-block--RIGHT-ALIGN .public-DraftStyleDefault-ltr {
+    text-align: end;
+}

@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-newindexpage{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* ================================================= banner ================================================ */
+    .homepage-banner {
+        width: 100vw;
+    }
+
+    .homepage-banner img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* ================================================ news page =============================================== */
+    .newspage-container {
+        background-color: #ffffcc;
+        padding: 0;
+    }
+
+    .newspage-title {
+        text-align: center;
+        color: #db0000;
+        padding: 12px 0;
+    }
+
+    .newspage-content {
+        margin: 0 40px;
+    }
+
+    .content-posts {
+        padding: 12px 0;
+    }
+
+    .post {
+        background-color: #ffffff;
+        margin-bottom: 40px;
+    }
+
+    .post:hover {
+        box-shadow: 8px 8px 8px #d8d8d8;
+    }
+
+    .post hr {
+        height: 4px;
+        margin: 0;
+        width: 24%;
+        background: linear-gradient(to right, #db0000, #fe6767);
+        opacity: unset;
+    }
+
+    .post-image {
+        padding: 0;
+    }
+
+    .post-image img {
+        width: 100%;
+        border-radius: 20px;
+        object-fit: contain;
+    }
+
+    .post-content {
+        padding: 8px;
+    }
+
+    .post-title h2 {
+        color: #db0000;
+    }
+
+    .post-content p {
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .newspage-link {
+        padding: 12px 40px;
+    }
+
+    .combo-link {
+        margin-bottom: 60px;
+    }
+
+    .combo-link h3 {
+        background: linear-gradient(to right, #db0000, #fe6767);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .combo-link ul {
+        padding: 0;
+    }
+
+    .combo-link li {
+        list-style: inside;
+        line-height: 2;
+        font-size: 24px;
+        border-bottom: 1px solid #b3b3b3;
+    }
+
+    .combo-link a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .combo-link a:hover {
+        color: #db0000;
+    }
+
+    .newspage-branchs {
+        color: #db0000;
+        text-align: center;
+        border: 2px solid #db0000;
+        border-radius: 40px;
+        padding: 40px;
+        margin: 0 60px;
+    }
+
+    .newspage-branchs hr {
+        height: 2px;
+        opacity: unset;
+    }
+
+    .newspage-branchs .row {
+        margin: 0 20px;
+        display: flex;
+    }
+
+    .branchs {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .branchs button {
+        font-size: 20px;
+        font-weight: 500;
+        color: #db0000;
+        margin: 12px;
+        padding: 4px 16px;
+        border: 1px solid #db0000;
+        border-radius: 20px;
+        background: transparent;
+    }
+
+    .branchs button:hover {
+        color: #fff;
+        background: #db0000;
+    }
+
+    .list-group-item {
+        width: fit-content;
+    }
+
+    .list-group-item+.list-group-item {
+        border-top-width: thin;
+    }
+
+    .list-group-item+.list-group-item.active {
+        margin-top: auto;
+    }
+
+    .list-group-item.active {
+        background-color: #db0000;
+        border-color: #db0000;
+    }
+
+    .list-group-item:first-child {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .list-group-item:last-child {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    .tab-content>.active {
+        text-align: left;
+        padding: 0 40px;
+    }
+
+    .branch-img img {
+        width: 80%;
+    }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="homepage-banner">
+    <img src="{% static 'images/ban-tin-lam-dep-banner.png' %}" class="img-fluid" alt="ban-tin-lam-dep-banner" />
+</div>
+<div class="container-fluid newspage-container">
+    <div class="container-fluid newspage-title">
+        <h1>BẢNG TIN LÀM ĐẸP</h1>
+    </div>
+    <div class="row newspage-content">
+        <div class="col-xl-7 content-posts">
+            {% for post in blogpages %}
+            <a href="{% pageurl post %}" style="text-decoration: none;">
+                <div class="row post">
+                    <div class="col-md-5 post-image">{% image post.specific.image original %}</div>
+                    <div class="col-md-7 post-content">
+                        <div class="post-title"><h2>{{ post.title }}</h2></div>
+                        <hr />
+                        <div><p>{{ post.specific.intro }}</p></div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="col-xl-5 newspage-link">
+            <div class="combo-link">
+                <h3>TIPS PHUN SĂM THẨM MỸ</h3>
+                <ul>
+                    <li><a href="">Tips phun môi</a></li>
+                    <li><a href="">Tips phun mí mắt</a></li>
+                    <li><a href="">Tips làm đẹp chân mày</a></li>
+                    <li><a href="">Kinh nghiệm làm đẹp khác</a></li>
+                </ul>
+            </div>
+            <div class="combo-link">
+                <h3>KINH NGHIỆM LÀM ĐẸP DA</h3>
+                <ul>
+                    <li><a href="">Những điều cần biết khi điều trị tàn nhan</a></li>
+                    <li><a href="">Tắm trắng có hiệu quả không?</a></li>
+                    <li><a href="">Những điều lưu ý khi điều trị mụn</a></li>
+                    <li>
+                        <a href="">Liệu trình nâng cơ Meso Boots có hiệu quả không?</a>
+                    </li>
+                    <li><a href="">Nên cấy loại Collagen tươi nào?</a></li>
+                </ul>
+            </div>
+            <div class="combo-link">
+                <h3>KINH NGHIỆM KHI TRIỆT LÔNG</h3>
+                <ul>
+                    <li><a href="">Công nghệ nào triệt lông hiệu quả nhất</a></li>
+                    <li><a href="">Triệt lông bao lâu thì đi triệt lại?</a></li>
+                    <li><a href="">Triệt lông bao lâu thì sẽ mọc lại?</a></li>
+                    <li><a href="">Triệt lông nách thì nách có bị thâm không?</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}

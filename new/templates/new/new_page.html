@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-newpage{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* ===================== card service ========================= */
+    a {
+        text-decoration: none;
+    }
+
+    .card {
+        box-shadow: 0px 0px 10px gray;
+    }
+
+    .breadcrumb-item a,
+    .list-group-item a {
+        text-decoration: none;
+        /* font-size: medium; */
+        font-weight: 400;
+        color: #d21d1a;
+    }
+
+    .list-group-item {
+        padding: 0.5rem 0;
+    }
+
+    .list-group-flush>.list-group-item {
+        /* border-width: 0 0 1px 0 #d21d1a; */
+        border-color: #d21d1a;
+    }
+
+    .resize-img {
+        height: 542px;
+        width: 100%;
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .resize-img {
+            height: 342px;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 426px) {
+        .resize-img {
+            height: 242px;
+            width: 100%;
+        }
+    }
+
+    .text-service {
+        color: #d21d1a;
+        font-weight: 600;
+    }
+
+    .text-desc-service {
+        background-color: #f8eda5;
+        margin-top: 16px;
+        padding: 4px 8px;
+        border-radius: 12px;
+    }
+
+    .list-detail-title {
+        color: black;
+        font-size: larger;
+        font-weight: 600;
+    }
+
+    .list-detail-title:hover {
+        color: rgb(51, 51, 51);
+    }
+
+    .header-service {
+        background: linear-gradient(to right, #d41f1c 0%, #fda03c 100%);
+        text-transform: uppercase;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .list-detail .list-group-item {
+        border: none;
+        background-color: #f8eda5;
+    }
+
+    .list-detail .list-group-item a {
+        color: black;
+    }
+
+    .list-group .list-group-item-child-final {
+        padding-bottom: 0;
+    }
+
+    .post-detail-title {
+        text-align: center;
+        color: #d21d1a;
+        padding: 8px;
+        text-transform: uppercase;
+    }
+
+    .slick-slider {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .image-slick {
+        border: 4px solid #f3c051;
+        border-radius: 16px;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        background-color: transparent;
+        color: #d21d1a;
+    }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    {% if self.get_ancestors|length > 1 %}
+                    <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            {% for p in self.get_ancestors %}
+                            {% if p.is_root == False %}
+                            <li class="breadcrumb-item"><a href="{{ p.url }}">{{ p.title }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            <li class="breadcrumb-item active" aria-current="page">{{ self.title }}</li>
+                        </ol>
+                    </nav>
+                    {% endif %}
+                    <h1 class="card-title text-service">{{ page.title }}</h1>
+                    {% image page.image original class="card-img-top resize-img" %}
+                    <p class="card-text text-desc-service">{{ page.intro }}</p>
+                    <div class="text-desc-service">
+                        <a class="list-detail-title" data-bs-toggle="collapse" href="#multiCollapseExample1"
+                            role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-list-ol" viewBox="0 0 15 15">
+                                <path fill-rule="evenodd"
+                                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5" />
+                                <path
+                                    d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635z" />
+                            </svg>
+                            Nội dung chi tiết</a>
+                        <div class="row">
+                            <div class="col">
+                                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-detail my-3" id="post">{{ page.body|richtext }}</div>
+                    <div class="slick-slider my-3">
+                        <div>
+                            <img class="card-img-top resize-img image-slick"
+                                src="./static/images/phun-moi-service-1.png" alt="Image 1" />
+                        </div>
+                        <div>
+                            <img class="card-img-top resize-img image-slick" src="./static/images/phun-moi-service.png"
+                                alt="Image 2" />
+                        </div>
+                        <div>
+                            <img class="card-img-top resize-img image-slick"
+                                src="./static/images/phun-moi-service-2.png" alt="Image 3" />
+                        </div>
+                        <!-- Thêm nhiều slide khác nếu cần -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-none d-md-block col-md-4">
+    <h4 class="header-service">Dịch vụ nổi bật</h4>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item text-service">
+            <a href="#">Cấy son tươi</a>
+        </li>
+        <li class="list-group-item text-service">
+            <a href="#">Phun môi Collagen</a>
+        </li>
+        <li class="list-group-item text-service">
+            <a href="#">Khắc sợi lông mày</a>
+        </li>
+    </ul>
+    <h4 class="header-service mt-2">Tin tức làm đẹp mới nhất</h4>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item text-service">
+            <a href="#">Cách chăm sóc môi sau phun xăm</a>
+        </li>
+        <li class="list-group-item text-service">
+            <a href="#">Màu môi thường được giữ sau bao lâu?</a>
+        </li>
+        <li class="list-group-item text-service">
+            <a href="#">Nên làm môi bằng công nghệ gì?</a>
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const convertExtendedAscii = (str) => {
+        // replace any extended-latin characters with standard ASCII letters
+        const characterMap = {
+            'á': 'a', 'à': 'a', 'ả': 'a', 'ã': 'a', 'ạ': 'a',
+            'ă': 'a', 'ắ': 'a', 'ằ': 'a', 'ẵ': 'a', 'ặ': 'a', 'ẳ': 'a',
+            'â': 'a', 'ấ': 'a', 'ầ': 'a', 'ẫ': 'a', 'ẩ': 'a', 'ậ': 'a',
+            'đ': 'd',
+            'é': 'e', 'è': 'e', 'ẻ': 'e', 'ẽ': 'e', 'ẹ': 'e',
+            'ê': 'e', 'ế': 'e', 'ề': 'e', 'ể': 'e', 'ễ': 'e', 'ệ': 'e',
+            'í': 'i', 'ì': 'i', 'ỉ': 'i', 'ĩ': 'i', 'ị': 'i',
+            'ô': 'o', 'ố': 'o', 'ồ': 'o', 'ổ': 'o', 'ỗ': 'o', 'ộ': 'o',
+            'ơ': 'o', 'ớ': 'o', 'ờ': 'o', 'ở': 'o', 'ỡ': 'o', 'ợ': 'o',
+            'ù': 'u', 'ú': 'u', 'ủ': 'u', 'ũ': 'u', 'ụ': 'u',
+            'ư': 'u', 'ứ': 'u', 'ừ': 'u', 'ữ': 'u', 'ử': 'u', 'ự': 'u',
+            'ỳ': 'y', 'ý': 'y', 'ỷ': 'y', 'ỹ': 'y', 'ỵ': 'y',
+
+            'Á': 'A', 'À': 'A', 'Ả': 'A', 'Ã': 'A', 'Ạ': 'A',
+            'Ă': 'A', 'Ắ': 'A', 'Ằ': 'A', 'Ẵ': 'A', 'Ặ': 'A', 'Ẳ': 'A',
+            'Â': 'A', 'Ấ': 'A', 'Ầ': 'A', 'Ẫ': 'A', 'Ẩ': 'A', 'Ậ': 'A',
+            'Đ': 'D',
+            'É': 'E', 'È': 'E', 'Ẻ': 'E', 'Ẽ': 'E', 'Ẹ': 'E',
+            'Ê': 'E', 'Ế': 'E', 'Ề': 'E', 'Ể': 'E', 'Ễ': 'E', 'Ệ': 'E',
+            'Í': 'I', 'Ì': 'I', 'Ỉ': 'I', 'Ĩ': 'I', 'Ị': 'I',
+            'Ô': 'O', 'Ố': 'O', 'Ồ': 'O', 'Ổ': 'O', 'Ỗ': 'O', 'Ộ': 'O',
+            'Ơ': 'O', 'Ớ': 'O', 'Ờ': 'O', 'Ở': 'O', 'Ỡ': 'O', 'Ợ': 'O',
+            'Ù': 'U', 'Ú': 'U', 'Ủ': 'U', 'Ũ': 'U', 'Ụ': 'U',
+            'Ư': 'U', 'Ứ': 'U', 'Ừ': 'U', 'Ữ': 'U', 'Ử': 'U', 'Ự': 'U',
+            'Ỳ': 'Y', 'Ý': 'Y', 'Ỷ': 'Y', 'Ỹ': 'Y', 'Ỵ': 'Y'
+        };
+
+        return str.replace(/[^\u0000-\u007E]/g, (a) => {
+            return characterMap[a] || '';
+        });
+    };
+
+    const slugify = (str) => {
+        str = str.replace(/^\s+|\s+$/g, ''); // remove leading and trailing whitespace
+        str = convertExtendedAscii(str);     // replace any extended-latin characters with standard ASCII letters
+        str = str.toLowerCase()              // convert to lower case
+            .replace(/[^a-z0-9 -]/g, '')       // Remove invalid chars
+            .replace(/\s+/g, '-')              // Collapse whitespace and replace with dash -
+            .replace(/-+/g, '-');              // Collapse duplicate dashes
+
+        return str;
+    };
+    // Lấy tất cả các tiêu đề h2 trong bài viết
+    const scope = document.getElementById('post');
+    const h2Headings = Array.from(scope.querySelectorAll('h2'));
+
+    // Tạo mục lục tại phẩn tử có id là multiCollapseExample1
+    const toc = document.getElementById('multiCollapseExample1');
+    const ol = document.createElement('ol');
+    ol.className = 'list-group list-group-numbered list-detail';
+    toc.appendChild(ol);
+
+    // Lặp qua các tiêu đề h2 và tạo mục lục dựa trên chúng
+    h2Headings.forEach((h2Heading, index) => {
+        if (!h2Heading.id) {
+            h2Heading.id = `h2-no${index + 1}-${slugify(h2Heading.innerText)}`;
+        }
+
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item';
+
+        const h2Link = document.createElement('a');
+        h2Link.href = `#${h2Heading.id}`;
+        h2Link.textContent = h2Heading.textContent;
+
+        listItem.appendChild(h2Link);
+        ol.appendChild(listItem);
+
+        const h3Headings = Array.from(h2Heading.nextElementSibling.querySelectorAll('h3'));
+        if (h3Headings.length > 0) {
+            const nestedOl = document.createElement('ol');
+            nestedOl.className = 'list-group list-group-numbered list-detail ms-3';
+            listItem.appendChild(nestedOl);
+
+            h3Headings.forEach((h3Heading, index) => {
+                if (!h3Heading.id) {
+                    h3Heading.id = `h3-no${index + 1}-${slugify(h3Heading.innerText)}`;
+                }
+                const nestedListItem = document.createElement('li');
+                nestedListItem.className = 'list-group-item';
+
+                const h3Link = document.createElement('a');
+                h3Link.href = `#${h3Heading.id}`;
+                h3Link.textContent = h3Heading.textContent;
+
+                nestedListItem.appendChild(h3Link);
+                nestedOl.appendChild(nestedListItem);
+            });
+        }
+    });
+</script>
+{% endblock %}
