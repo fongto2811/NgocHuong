@@ -4,8 +4,8 @@
 {% block body_class %}template-newpage{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/slick.css' %}" />
-<link rel="stylesheet" href="{% static 'css/slick-theme.css' %}" />
+<link rel="stylesheet" href="{% static 'slick/slick.css' %}" />
+<link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}" />
 <style>
     body {
         padding: 0;
@@ -220,7 +220,7 @@
 
 {% block extra_js %}
 <script type="text/javascript" src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
 <script>
     const convertExtendedAscii = (str) => {
         // replace any extended-latin characters with standard ASCII letters

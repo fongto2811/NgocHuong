@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% load static %}
 {% block body_class%} template-homepage {% endblock %} {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/slick.css' %}" />
-<link rel="stylesheet" href="{% static 'css/slick-theme.css' %}" />
+<link rel="stylesheet" href="{% static 'slick/slick.css' %}" />
+<link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}" />
 <style>
     body {
         padding: 0;
@@ -341,7 +341,6 @@
 
     .slick-dots li button:before {
         color: #d21d1a !important;
-        font-size: 40px;
     }
 
     /* ================================================ posts =============================================== */
@@ -877,7 +876,7 @@
 </div>
 {% endblock %} {% block extra_js %}
 <script type="text/javascript" src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
 <script>
     const imgShowing = document.querySelector(".show-image");
     function handleOnClick(linkImg) {
