@@ -10,6 +10,10 @@
         overflow-x: hidden;
     }
 
+
+
+
+
     /* ================================================= banner ================================================ */
     .homepage-banner {
         width: 100%;
@@ -279,6 +283,37 @@
         height: auto;
     }
 
+    /* .discount .list-discount .right {
+        margin: 8px;
+        padding: 1rem;
+    } */
+
+    @media (max-width: 426px) {
+
+        .discount .list-discount>ul {
+            max-width: 100%;
+        }
+
+        .w-95 {
+            width: 90% !important;
+        }
+
+        .row>* {
+            padding-left: unset;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .discount .list-discount>ul {
+            max-width: 100%;
+        }
+
+        .row>* {
+            padding-left: unset;
+            padding-right: unset;
+        }
+    }
+
     /* ============================================ gallery =============================================== */
 
     .gallery {
@@ -330,10 +365,26 @@
             height: 242px;
             width: 100%;
         }
+
+        .image-slick {
+            border: 2px solid #d21d1a;
+            width: 96%;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 0 8px #cdcdcd;
+        }
     }
 
     .image-slick {
         border: 4px solid #cdcdcd;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 0 8px #cdcdcd;
+    }
+
+    .image-slick-post {
+        border: 2px solid #d21d1a;
+        width: 96%;
         object-fit: cover;
         border-radius: 16px;
         box-shadow: 0 0 8px #cdcdcd;
@@ -551,8 +602,8 @@
 </div>
 <div class="container-fluid discount">
     <div class="list-discount row">
-        <ul class="list-group left col-6">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+        <ul class="list-group left col-12 col-lg-6">
+            <li class="list-group-item d-flex justify-content-between align-items-center m-2">
                 <div class="image-text d-flex align-items-center">
                     <img src="{% static 'images/logo2.png' %}" alt="phun-xam-dieu-khac-icon" />
                     <span>PHUN XĂM ĐIÊU KHẮC</span>
@@ -562,7 +613,7 @@
                     <a href="#" class="btn">XEM CHI TIẾT</a>
                 </div>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <li class="list-group-item d-flex justify-content-between align-items-center m-2">
                 <div class="image-text d-flex align-items-center">
                     <img src="{% static 'images/logo2.png' %}" alt="phun-xam-dieu-khac-icon" />
                     <span>TRẺ HÓA DA</span>
@@ -572,7 +623,7 @@
                     <a href="#" class="btn">XEM CHI TIẾT</a>
                 </div>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <li class="list-group-item d-flex justify-content-between align-items-center m-2">
                 <div class="image-text d-flex align-items-center">
                     <img src="{% static 'images/logo2.png' %}" alt="phun-xam-dieu-khac-icon" />
                     <span>TRỊ NÁM - TÀN NHANG</span>
@@ -582,7 +633,7 @@
                     <a href="#" class="btn">XEM CHI TIẾT</a>
                 </div>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <li class="list-group-item d-flex justify-content-between align-items-center m-2">
                 <div class="image-text d-flex align-items-center">
                     <img src="{% static 'images/logo2.png' %}" alt="phun-xam-dieu-khac-icon" />
                     <span>TẮM TRẮNG</span>
@@ -592,7 +643,7 @@
                     <a href="#" class="btn">XEM CHI TIẾT</a>
                 </div>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <li class="list-group-item d-flex justify-content-between align-items-center m-2">
                 <div class="image-text d-flex align-items-center">
                     <img src="{% static 'images/logo2.png' %}" alt="phun-xam-dieu-khac-icon" />
                     <span>TRIỆT LÔNG</span>
@@ -602,7 +653,7 @@
                     <a href="#" class="btn">XEM CHI TIẾT</a>
                 </div>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <li class="list-group-item d-flex justify-content-between align-items-center m-2">
                 <div class="image-text d-flex align-items-center">
                     <img src="{% static 'images/logo2.png' %}" alt="phun-xam-dieu-khac-icon" />
                     <span>DỊCH VỤ KHÁC</span>
@@ -613,7 +664,7 @@
                 </div>
             </li>
         </ul>
-        <ul class="list-group right col-6">
+        <ul class="list-group right col-12 col-lg-6 m-2 w-95">
             <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="text">
                     <h5 class="mb-1">PHUN XĂM MÀY - MÔI - MÍ</h5>
@@ -650,6 +701,8 @@
                 </div>
             </li>
         </ul>
+        <div class="">
+        </div>
     </div>
 </div>
 <div class="homepage-banner">
@@ -658,7 +711,25 @@
 <div class="container-fluid gallery">
     <h1 class="text-center">CƠ SỞ VẬT CHẤT HIỆN ĐẠI ĐẠT CHUẨN 5 SAO</h1>
     <div class="gallery-content">
-        <div class="row">
+        <div class="slick-slider d-block d-lg-none">
+            <div class="">
+                <img class="card-img-top image-slick-post m-2" src="{% static 'images/phun-moi-service-2.png' %}"
+                    alt="Image 3" />
+            </div>
+            <div class="">
+                <img class="card-img-top image-slick-post m-2" src="{% static 'images/phun-moi-service-2.png' %}"
+                    alt="Image 3" />
+            </div>
+            <div class="">
+                <img class="card-img-top image-slick-post m-2" src="{% static 'images/phun-moi-service-2.png' %}"
+                    alt="Image 3" />
+            </div>
+            <div class="">
+                <img class="card-img-top image-slick-post m-2" src="{% static 'images/phun-moi-service-2.png' %}"
+                    alt="Image 3" />
+            </div>
+        </div>
+        <div class="row d-none d-lg-block">
             <div class="col-7">
                 <div class="gallery-content-img">
                     <img src="{% static 'images/img1.png' %}" class="img-fluid show-image"
@@ -810,8 +881,31 @@
 </div>
 <div class="container-fluid section-posts my-4">
     <h1 class="text-center">Tin Tức Ngọc Hường</h1>
-    <div class="row my-4">
-        <div class="col-md-6">
+    <div class="d-lg-none">
+        <div class="row">
+            <div class="slick-slider-post">
+                <div class="">
+                    <img class="card-img-top image-slick-post m-2" src="{% static 'images/phun-moi-service-2.png' %}"
+                        alt="Image 3" />
+                </div>
+                <div class="">
+                    <img class="card-img-top image-slick-post m-2" src="{% static 'images/phun-moi-service-2.png' %}"
+                        alt="Image 3" />
+                </div>
+                <div class="">
+                    <img class="card-img-top image-slick-post m-2" src="{% static 'images/phun-moi-service-2.png' %}"
+                        alt="Image 3" />
+                </div>
+                <div class="">
+                    <img class="card-img-top image-slick-post m-2" src="{% static 'images/phun-moi-service-2.png' %}"
+                        alt="Image 3" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="d-none d-lg-flex row my-4">
+        <div class="col-lg-6">
             <div class="m-2 text-center">
                 <img class="card-img-top image-post-item" src="{% static 'images/phun-moi-service-2.png' %}"
                     alt="Image 3" />
@@ -826,7 +920,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="m-3 d-flex justify-content-start">
                 <img class="card-img-top image-post-item-other" src="{% static 'images/phun-moi-service-2.png' %}"
                     alt="Image 3" />
@@ -877,6 +971,7 @@
 {% endblock %} {% block extra_js %}
 <script type="text/javascript" src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+
 <script>
     const imgShowing = document.querySelector(".show-image");
     function handleOnClick(linkImg) {
@@ -885,17 +980,51 @@
         }
     }
     $(document).ready(function () {
-        $(".slick-slider").slick({
+        var windowWidth = $(window).width();
+
+        $(".slick-slider-post").slick({
             // Cấu hình tùy chọn của Slick Slider
             autoplay: false,
             autoplaySpeed: 2000,
-            slidesToShow: 4,
+            slidesToShow: 1,
             slidesToScroll: 1,
             dots: true,
             prevArrow: false,
             nextArrow: false,
             // Thêm các tùy chọn khác nếu cần
         });
+        $(".slick-slider").slick({
+            // Cấu hình tùy chọn của Slick Slider
+            autoplay: false,
+            autoplaySpeed: 2000,
+            // slidesToShow: 4,
+            slidesToScroll: 1,
+            dots: true,
+            prevArrow: false,
+            nextArrow: false,
+            // Thêm các tùy chọn khác nếu cần
+        });
+        if (windowWidth <= 425) {
+            $(".slick-slider").slick({
+                // Cấu hình tùy chọn của Slick Slider
+                slidesToShow: 1,
+                // Thêm các tùy chọn khác nếu cần
+            });
+        } else if (windowWidth <= 768) {
+            $(".slick-slider").slick({
+                // Cấu hình tùy chọn của Slick Slider
+                slidesToShow: 3,
+                // Thêm các tùy chọn khác nếu cần
+            });
+        } else {
+            $(".slick-slider").slick({
+                // Cấu hình tùy chọn của Slick Slider
+                slidesToShow: 4,
+                // Thêm các tùy chọn khác nếu cần
+            });
+        }
+
     });
 </script>
+
 {% endblock %}

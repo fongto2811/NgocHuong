@@ -131,6 +131,9 @@
             margin: 0 60px;
         }
 
+
+
+
         .newspage-branchs hr {
             height: 2px;
             opacity: unset;
@@ -199,11 +202,43 @@
             width: 80%;
         }
 
+        @media (max-width: 426px) {
+            .newspage-branchs {
+                padding: 20px;
+
+                margin: unset;
+            }
+
+            .tab-content>.active {
+                text-align: center;
+                padding: unset;
+            }
+
+            .newspage-branchs .row {
+                margin: unset;
+            }
+
+            .branch-img img {
+                width: 100%;
+                height: 328px;
+                border: 1px solid #db0000;
+                border-radius: 20px;
+            }
+        }
+
         /* ================================================ footer =============================================== */
         .footer {
             background-color: #ffffcc;
             padding: 60px;
             color: #ff0000;
+        }
+
+        @media (max-width: 426px) {
+            .footer {
+                background-color: #ffffcc;
+                padding: 20px;
+                color: #ff0000;
+            }
         }
 
         .footer h5 {
