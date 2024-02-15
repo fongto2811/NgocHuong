@@ -996,35 +996,33 @@
             // Thêm các tùy chọn khác nếu cần
         });
         $(".slick-slider").slick({
-            // Cấu hình tùy chọn của Slick Slider
             autoplay: false,
             autoplaySpeed: 2000,
-            // slidesToShow: 4,
             slidesToScroll: 1,
             dots: true,
             prevArrow: false,
             nextArrow: false,
-            // Thêm các tùy chọn khác nếu cần
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                },
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: Infinity,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                }
+            ]
         });
-        if (windowWidth <= 425) {
-            $(".slick-slider").slick({
-                // Cấu hình tùy chọn của Slick Slider
-                slidesToShow: 1,
-                // Thêm các tùy chọn khác nếu cần
-            });
-        } else if (windowWidth <= 768) {
-            $(".slick-slider").slick({
-                // Cấu hình tùy chọn của Slick Slider
-                slidesToShow: 3,
-                // Thêm các tùy chọn khác nếu cần
-            });
-        } else {
-            $(".slick-slider").slick({
-                // Cấu hình tùy chọn của Slick Slider
-                slidesToShow: 4,
-                // Thêm các tùy chọn khác nếu cần
-            });
-        }
 
     });
 </script>
